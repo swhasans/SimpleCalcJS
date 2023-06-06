@@ -1,9 +1,45 @@
 # SimpleCalcJS
-A JavaScript-based on-screen calculator with basic math operations, decimal input, clear button, backspace functionality, and keyboard support.
 
-## Tasks:
+## Table of Contents
+- [Introduction](#introduction)
+- [Languages](#languages)
+- [Tools](#tools)
+- [Features](#features)
+- [Preview](#preview)
+- [Tasks](#tasks)
+  - [Base Functionality](#base-functionality)
+  - [Extra Credit](#extra-credit)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+
+## Introduction
+SimpleCalcJS is a JavaScript-based on-screen calculator with basic math operations, decimal input, clear button, backspace functionality, and keyboard support.
+
+## Languages
+1. HTML 
+2. CSS 
+3. JavaScript.
+
+## Tools
+- Visual Studio Code
+- Bash Shell
+- Git and GitHub
+
+## Features
+- Users can perform basic math operations (addition, subtraction, multiplication, division) on the calculator.
+- Users can input decimal numbers using the "." button.
+- Users can clear the calculator's display and reset the input using the "clear" button.
+- Users can undo their input using the "backspace" button.
+- Users can use the keyboard for input, including numbers and operators.
+- The calculator displays an error message when dividing by zero.
+- The calculator handles multiple operations and evaluates them correctly, following the order of operations.
+- The calculator's UI is visually appealing with CSS styling, and the math functions are differentiated with distinct colors.
+
+## Preview
+🔗 **Live preview:** [Click Here!](https://your-calculator-url.com)
+
+## Tasks
 ### Base Functionality
-
 - [ ] **Implement Basic Math Functions:** Create functions for basic math operations (add, subtract, multiply, divide) and test them in the browser's console.
 
 - [ ] **Create Calculator HTML Structure:** Build a basic HTML calculator with buttons for digits, math functions, and an "Equals" key. Add a display area and fill it with dummy numbers.
@@ -26,3 +62,9 @@ A JavaScript-based on-screen calculator with basic math operations, decimal inpu
 - [ ] **Backspace Functionality:** Add a "backspace" button to allow users to undo input if they click the wrong number.
 
 - [ ] **Keyboard Support:** Enhance the calculator by adding keyboard support. Solve potential issues with specific keys, such as "/", by reading the MDN documentation on event.preventDefault().
+
+## License
+- This project is licensed under the MIT License - see the LICENSE.md file for details.
+
+## Acknowledgements
+- This project was inspired by The Odin Project.
