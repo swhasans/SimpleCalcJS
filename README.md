@@ -1,8 +1,8 @@
 # SimpleCalcJS
 A JavaScript-based on-screen calculator with basic math operations, decimal input, clear button, backspace functionality, and keyboard support.
 
-# Tasks:
-## Base Functionality
+## Tasks:
+### Base Functionality
 
 - [ ] **Implement Basic Math Functions:** Create functions for basic math operations (add, subtract, multiply, divide) and test them in the browser's console.
 
@@ -18,7 +18,7 @@ A JavaScript-based on-screen calculator with basic math operations, decimal inpu
 
 - [ ] **Error Handling and Validation:** Handle edge cases and potential bugs in the calculator. Display an error message if the user tries to divide by zero. Prevent issues caused by pressing "=" before entering all numbers or an operator.
 
-## Extra Credit
+### Extra Credit
 - [ ] **Decimal Input:** Implement the ability for users to input decimals by adding a "." button. Disable the decimal button if there's already one in the display to avoid multiple decimals in a number.
 
 - [ ] **CSS Styling:** Improve the visual appearance of the calculator using CSS. Differentiate the operations by giving them a distinct color from the keypad buttons.
