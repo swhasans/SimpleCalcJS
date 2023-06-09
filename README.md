@@ -43,7 +43,7 @@ SimpleCalcJS is a JavaScript-based on-screen calculator with basic math operatio
 
 - [x] **Implement Basic Math Functions:** Create functions for basic math operations (add, subtract, multiply, divide) and test them in the browser's console.
 
-- [ ] **Create Calculator HTML Structure:** Implement variable initialization, calculation function, and HTML structure for calculator.
+- [x] **Create Calculator HTML Structure:** Implement variable initialization, calculation function, and HTML structure for calculator.
 
 - [ ] **Add Clear Button Functionality:** Implement the functionality for the "clear" button to wipe out any existing data and reset the calculator.
 
