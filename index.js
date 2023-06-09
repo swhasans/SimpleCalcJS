@@ -1,3 +1,8 @@
+const numOne = 0;
+const operator = "";
+const numTwo = 0;
+
+
 const add = function (num1, num2) {
     return num1 + num2;
 };
