@@ -1,6 +1,15 @@
 const numOne = 0;
 const operator = "";
 const numTwo = 0;
+const displayValue = 0;
+
+const updateDisplayValue = function (){
+
+};
+
+const populateDisplay = function (){
+
+};
 
 const add = function (numOne, numTwo) {
     return numOne + numTwo;
