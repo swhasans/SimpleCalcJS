@@ -1,15 +1,42 @@
-const add = function (num1, num2) {
-    return num1 + num2;
+const numOne = 0;
+const operator = "";
+const numTwo = 0;
+
+const add = function (numOne, numTwo) {
+    return numOne + numTwo;
 };
 
-const subtract = function (num1, num2) {
-    return num1 - num2;
+const subtract = function (numOne, numTwo) {
+    return numOne - numTwo;
 };
 
-const multiply = function (num1, num2) {
-    return num1 * num2;
+const multiply = function (numOne, numTwo) {
+    return numOne * numTwo;
 };
 
-const divide = function (num1, num2) {
-    return num1 / num2;
+const divide = function (numOne, numTwo) {
+    return numOne / numTwo;
+};
+
+const operate = function (operator, numOne, numTwo) {
+
+    if(operator === "+")
+    {
+        return add(numOne, numTwo);
+    }
+
+    if(operator === "-")
+    {
+        return subtract(numOne, numTwo);
+    }
+
+    if(operator === "*")
+    {
+        return multiply(numOne, numTwo);
+    }
+
+    if(operator === "/")
+    {
+        return divide(numOne, numTwo);
+    }
 };
