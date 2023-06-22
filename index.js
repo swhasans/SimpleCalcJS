@@ -4,7 +4,7 @@ const numTwo = 0;
 const displayValue = 0;
 
 const updateDisplayValue = function (){
-
+    
 };
 
 const populateDisplay = function (){
