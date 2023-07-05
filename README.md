@@ -1,6 +1,7 @@
 # SimpleCalcJS
 
 ## Table of Contents
+
 - [Introduction](#introduction)
 - [Languages](#languages)
 - [Tools](#tools)
@@ -13,19 +14,23 @@
 - [Acknowledgements](#acknowledgements)
 
 ## Introduction
+
 SimpleCalcJS is a JavaScript-based on-screen calculator with basic math operations, decimal input, clear button, backspace functionality, and keyboard support.
 
 ## Languages
-1. HTML 
-2. CSS 
+
+1. HTML
+2. CSS
 3. JavaScript.
 
 ## Tools
+
 - Visual Studio Code
 - Bash Shell
 - Git and GitHub
 
 ## Features
+
 - Users can perform basic math operations (addition, subtraction, multiplication, division) on the calculator.
 - Users can input decimal numbers using the "." button.
 - Users can clear the calculator's display and reset the input using the "clear" button.
@@ -36,9 +41,11 @@ SimpleCalcJS is a JavaScript-based on-screen calculator with basic math operatio
 - The calculator's UI is visually appealing with CSS styling, and the math functions are differentiated with distinct colors.
 
 ## Preview
+
 🔗 **Live preview:** [Click Here!](https://your-calculator-url.com)
 
 ## Tasks
+
 ### Base Functionality
 
 - [x] **Implement Basic Math Functions:** Create functions for basic math operations (add, subtract, multiply, divide) and test them in the browser's console.
@@ -56,6 +63,7 @@ SimpleCalcJS is a JavaScript-based on-screen calculator with basic math operatio
 - [ ] **Error Handling and Validation:** Handle edge cases and potential bugs in the calculator. Display an error message if the user tries to divide by zero. Prevent issues caused by pressing "=" before entering all numbers or an operator.
 
 ### Extra Credit
+
 - [ ] **Decimal Input:** Implement the ability for users to input decimals by adding a "." button. Disable the decimal button if there's already one in the display to avoid multiple decimals in a number.
 
 - [ ] **CSS Styling:** Improve the visual appearance of the calculator using CSS. Differentiate the operations by giving them a distinct color from the keypad buttons.
@@ -65,7 +73,9 @@ SimpleCalcJS is a JavaScript-based on-screen calculator with basic math operatio
 - [ ] **Keyboard Support:** Enhance the calculator by adding keyboard support. Solve potential issues with specific keys, such as "/", by reading the MDN documentation on event.preventDefault().
 
 ## License
+
 - This project is licensed under the MIT License - see the LICENSE.md file for details.
 
 ## Acknowledgements
+
 - This project was inspired by The Odin Project.
