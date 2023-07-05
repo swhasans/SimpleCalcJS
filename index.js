@@ -1,6 +1,6 @@
-const numOne = 0;
-const operator = "";
-const numTwo = 0;
+let numOne = 0;
+let operator = "";
+let numTwo = 0;
 
 let displayValue = 0;
 
@@ -22,38 +22,32 @@ const userSelectNumber = numContainer.querySelectorAll('input');
 //modifyResultContainer
 const userSelectClear = document.querySelector("#user-clear-display");
 const userSelectBksp = document.querySelector("#user-bksp-display");
-
-const clearBox = function () {
-    calcDisplay.value = "";
-}
+const userSelectEquals = document.querySelector("#user-result-display");
 
 const eraseBox = function () {
-    clearBox();
-    displayValue = 0;
+    calcDisplay.value = "";
+};
+
+const resetnumOneValue = function () {
+    numOne = 0;
 }
 
-const updateDisplayValue = function (event) {
-    calcDisplay.value = calcDisplay.value + event.target.value;
-    displayValue = displayValue + calcDisplay.value;
-    console.log("CalcDisplay Value : " + calcDisplay.value) 
-};
+const resetOpsValue = function () {
+    operator = "";
+}
 
-const populateDisplay = function () {
-
-};
-
-if(userSelectOperation)
-
-userSelectNumber.forEach(numButton => {
-    numButton.addEventListener('click', updateDisplayValue);
-});
-
-// userSelectOperation.forEach(opButton => {
-//     opButton.addEventListener('click', updateDisplayValue);
-// });
+const resetnumTwoValue = function () {
+    numTwo = 0;
+}
+const resetValues = function () {
+    eraseBox();
+    resetnumOneValue();
+    resetOpsValue();
+    resetnumTwoValue();
+}
 
 const add = function (numOne, numTwo) {
-    return numOne + numTwo;
+    return Number(numOne) + Number(numTwo);
 };
 
 const subtract = function (numOne, numTwo) {
@@ -87,6 +81,71 @@ const operate = function (operator, numOne, numTwo) {
     }
 };
 
-// Event listener for when the user wants to clear the calculator display
-userSelectClear.addEventListener("click", eraseBox);
+const updateNumValue = function (event){
+    if(!operator){
+        updateNumOneValue(event);
+    }else{
+        updateNumTwoValue(event);
+    }
+}
 
+const updateNumOneValue = function (event) {
+    if(!numOne || numOne === Infinity){
+        resetnumOneValue();
+        eraseBox();
+    }
+    numOne = numOne * 10 + Number(event.target.value);
+    updateDisplayValue(event);
+    console.log(`numOne: ${numOne}`);
+};
+
+const updateNumTwoValue = function (event) {
+    if(!numTwo || numTwo === Infinity){
+        resetnumTwoValue();
+        eraseBox();
+    }
+    numTwo = numTwo * 10 + Number(event.target.value);
+    updateDisplayValue(event);
+    console.log(`numTwo: ${numTwo}`);
+};
+
+const updateOperatorValue = function (event) {
+    operator = event.target.value;
+    console.log(`operator: ${operator}`);
+    eraseBox();
+};
+
+const updateDisplayValue = function (event) {
+    calcDisplay.value += event.target.value;
+    console.log("CalcDisplay Value: " + calcDisplay.value);
+};
+
+const computeValue = function (event) {
+    console.log(`numOne: ${numOne} || operator: ${operator} || numTwo: ${numTwo}`);
+
+    // Make numOne the result
+    numOne = operate(operator, numOne, numTwo);
+    console.log("Result : " + numOne);
+    // Update the value displayed in textarea with the result
+    calcDisplay.value = numOne;
+
+    //Resetting the value of operator and numTwo because a operation has been completed.
+    resetOpsValue();
+    resetnumTwoValue();
+};
+
+// Event listener for when the user wants to select the second number to perform operation on
+userSelectOperation.forEach(opButton => {
+    opButton.addEventListener('click', updateOperatorValue);
+});
+
+// Event listener for when the user wants to select a number from the keypad
+userSelectNumber.forEach(numButton => {
+    numButton.addEventListener('click', updateNumValue);
+});
+
+// Event listener for when the user wants to perform a operation with two numbers
+userSelectEquals.addEventListener('click', computeValue);
+
+// Event listener for when the user wants to clear the calculator display
+userSelectClear.addEventListener("click", resetValues);
