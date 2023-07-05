@@ -26,10 +26,13 @@ const userSelectEquals = document.querySelector("#user-result-display");
 
 const eraseBox = function () {
     calcDisplay.value = "";
+};
+
+const resetValues = function () {
     numOne = 0;
     operator = "";
     numTwo = 0;
-};
+}
 
 const add = function (numOne, numTwo) {
     return Number(numOne) + Number(numTwo);
@@ -81,10 +84,10 @@ const updateOperatorValue = function (event) {
 };
 
 const updateDisplayValue = function (event) {
-    updateNumOneValue( event.target.value);
+    updateNumOneValue(event.target.value);
     calcDisplay.value += event.target.value;
     displayValue = calcDisplay.value;
-    
+
     console.log("CalcDisplay Value: " + calcDisplay.value);
     console.log("displayValue: " + displayValue);
 };
@@ -92,12 +95,12 @@ const updateDisplayValue = function (event) {
 const computeValue = function (event) {
     numTwo = calcDisplay.value;
     console.log(`numOne: ${numOne} || operator: ${operator} || numTwo: ${numTwo}`);
-    
+
     // Make numOne the result
     numOne = operate(operator, numOne, numTwo);
     // Update the value displayed in textarea with the result
     calcDisplay.value = numOne;
-    
+
     //Resetting the value of operator and numTwo because a operation has been completed.
     operator = "";
     numTwo = 0;
