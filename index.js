@@ -119,13 +119,19 @@ const updateDisplayValue = function (event) {
 };
 
 const computeValue = function (event) {
+    let result = 0;
     console.log(`numOne: ${numOne} || operator: ${operator} || numTwo: ${numTwo}`);
 
     // Make numOne the result
-    numOne = operate(operator, numOne, numTwo);
-    console.log("Result : " + numOne);
+    result = numOne = operate(operator, numOne, numTwo);
+    
+    if(!result){
+        result = 0;
+    }  
+
+    console.log("Result : " + result);
     // Update the value displayed in textarea with the result
-    calcDisplay.value = numOne;
+    calcDisplay.value = result;
 
     //Resetting the value of operator and numTwo because a operation has been completed.
     resetOpsValue();
