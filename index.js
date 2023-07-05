@@ -2,8 +2,6 @@ let numOne = 0;
 let operator = "";
 let numTwo = 0;
 
-let displayValue = 0;
-
 // Selecting the container, input fields, and buttons
 //MAIN Container
 const container = document.querySelector(".container");
