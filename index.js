@@ -115,25 +115,25 @@ const updateOperatorValue = function (event) {
 
 const updateDisplayValue = function (event) {
     calcDisplay.value += event.target.value;
-    console.log("CalcDisplay Value: " + calcDisplay.value);
 };
 
 const computeValue = function (event) {
     console.log(`numOne: ${numOne} || operator: ${operator} || numTwo: ${numTwo}`);
 
-    // Make numOne the result
-    numOne = numOne = operate(operator, numOne, numTwo);
-    result = numOne;
-
-    if (!result) {
+    if (!numOne && !numTwo && !operator) {
         result = 0;
+    } else if (operate(operator, numOne, numTwo) === Infinity) {
+        result = "Error: Dividing by zero? Nice try."
+    } else if (numOne && !numTwo) {
+        result = numOne;
+    } else {
+        numOne = operate(operator, numOne, numTwo);
+        result = numOne;
     }
 
-    console.log("Result : " + result);
-    // Update the value displayed in textarea with the result
+    console.log("Result: " + result);
     calcDisplay.value = result;
 
-    // Resetting the value of operator and numTwo because a operation has been completed.
     resetOpsValue();
     resetnumTwoValue();
 };

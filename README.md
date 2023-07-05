@@ -60,7 +60,7 @@ SimpleCalcJS is a JavaScript-based on-screen calculator with basic math operatio
 
 - [ ] **Handle Multiple Operations and Evaluation Order:** Enable the calculator to handle multiple operations by evaluating each pair of numbers at a time. Ensure that only a single pair of numbers is evaluated at each step and display the result correctly. Round answers with long decimals to prevent overflow.
 
-- [ ] **Error Handling and Validation:** Handle edge cases and potential bugs in the calculator. Display an error message if the user tries to divide by zero. Prevent issues caused by pressing "=" before entering all numbers or an operator.
+- [x] **Error Handling and Validation:** Handle edge cases and potential bugs in the calculator. Display an error message if the user tries to divide by zero. Prevent issues caused by pressing "=" before entering all numbers or an operator.
 
 ### Extra Credit
 
