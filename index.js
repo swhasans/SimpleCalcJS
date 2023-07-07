@@ -19,6 +19,7 @@ const numContainer = document.querySelector(".numberContainer");
 const userSelectNumber = numContainer.querySelectorAll('input');
 
 //modifyResultContainer
+const userSelectDecimal = document.querySelector("#user-add-decimal");
 const userSelectClear = document.querySelector("#user-clear-display");
 const userSelectBksp = document.querySelector("#user-bksp-display");
 const userSelectEquals = document.querySelector("#user-result-display");
@@ -149,11 +150,13 @@ userSelectOperation.forEach(opButton => {
     opButton.addEventListener('click', updateOperatorValue);
 });
 
+// Event listener for when the user wants to perform a operation with two numbers
 userSelectEquals.addEventListener("click", function (event) {
     computeValue(event);
     resetValues();
 });
 
+// Event listener for when the user wants to clear the calculator display
 userSelectClear.addEventListener("click", function () {
     eraseBox();
     resetValues();
