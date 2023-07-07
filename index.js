@@ -50,15 +50,15 @@ const add = function (numOne, numTwo) {
 };
 
 const subtract = function (numOne, numTwo) {
-    return numOne - numTwo;
+    return Number(numOne) - Number(numTwo);
 };
 
 const multiply = function (numOne, numTwo) {
-    return numOne * numTwo;
+    return Number(numOne) * Number(numTwo);
 };
 
 const divide = function (numOne, numTwo) {
-    return numOne / numTwo;
+    return Number(numOne) / Number(numTwo);
 };
 
 const operate = function (operator, numOne, numTwo) {
@@ -114,6 +114,10 @@ const updateOperatorValue = function (event) {
     eraseBox();
 };
 
+const addDecimal = function (event){
+    
+};
+
 const updateDisplayValue = function (event) {
     calcDisplay.value += event.target.value;
 };
@@ -148,6 +152,10 @@ userSelectNumber.forEach(numButton => {
 // Event listener for when the user wants to select the second number to perform operation on
 userSelectOperation.forEach(opButton => {
     opButton.addEventListener('click', updateOperatorValue);
+});
+
+userSelectDecimal.addEventListener("click", function () {
+    addDecimal();
 });
 
 // Event listener for when the user wants to perform a operation with two numbers
