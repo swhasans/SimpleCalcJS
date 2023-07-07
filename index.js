@@ -154,6 +154,7 @@ userSelectOperation.forEach(opButton => {
     opButton.addEventListener('click', updateOperatorValue);
 });
 
+// Event listener for when the user wants to select the decmial key from the keypad
 userSelectDecimal.addEventListener("click", function () {
     addDecimal();
 });
