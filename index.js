@@ -114,8 +114,21 @@ const updateOperatorValue = function (event) {
     eraseBox();
 };
 
-const addDecimal = function (event){
-    
+const addDecimal = function (event) {
+    // Check which number the decimal has to be added to.
+    if (!operator) {
+        // Check if that number already has a decimal point, if yes then do nothing return.
+        if (Number.isInteger(numOne)) {
+            numOne += ".";
+            updateDisplayValue(numOne);
+        }
+    } else {
+        // Check if that number already has a decimal point, if yes then do nothing return.
+        if (Number.isInteger(numTwo)) {
+            numTwo += ".";
+            updateDisplayValue(numTwo);
+        }
+    }
 };
 
 const updateDisplayValue = function (event) {
