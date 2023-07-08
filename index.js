@@ -124,6 +124,7 @@ const computeValue = function (event) {
         result = 0;
     } else if (operate(operator, numOne, numTwo) === Infinity) {
         result = "Error: Dividing by zero? Nice try."
+        numOne = NaN;
     } else if (numOne && !numTwo) {
         result = numOne;
     } else {
@@ -151,7 +152,6 @@ userSelectOperation.forEach(opButton => {
 
 userSelectEquals.addEventListener("click", function (event) {
     computeValue(event);
-    resetValues();
 });
 
 userSelectClear.addEventListener("click", function () {
