@@ -93,9 +93,10 @@ const updateNumOneValue = function (event) {
         resetnumOneValue();
         eraseBox();
     }
-    numOne = numOne * 10 + Number(event.target.value);
+    
+    numOne = numOne + (event.target.value);
     updateDisplayValue(event);
-    console.log(`numOne: ${numOne}`);
+    console.log(`numOne: ${Number(numOne)}`);
 };
 
 const updateNumTwoValue = function (event) {
@@ -103,9 +104,9 @@ const updateNumTwoValue = function (event) {
         resetnumTwoValue();
         eraseBox();
     }
-    numTwo = numTwo * 10 + Number(event.target.value);
+    numTwo = numTwo + (event.target.value);
     updateDisplayValue(event);
-    console.log(`numTwo: ${numTwo}`);
+    console.log(`numTwo: ${Number(numTwo)}`);
 };
 
 const updateOperatorValue = function (event) {
@@ -120,13 +121,13 @@ const addDecimal = function (event) {
         // Check if that number already has a decimal point, if yes then do nothing return.
         if (Number.isInteger(numOne)) {
             numOne += ".";
-            updateDisplayValue(numOne);
+            updateDisplayValue(event);
         }
     } else {
         // Check if that number already has a decimal point, if yes then do nothing return.
         if (Number.isInteger(numTwo)) {
             numTwo += ".";
-            updateDisplayValue(numTwo);
+            updateDisplayValue(event);
         }
     }
 };
@@ -136,7 +137,7 @@ const updateDisplayValue = function (event) {
 };
 
 const computeValue = function (event) {
-    console.log(`numOne: ${numOne} || operator: ${operator} || numTwo: ${numTwo}`);
+    console.log(`numOne: ${Number(numOne)} || operator: ${operator} || numTwo: ${Number(numTwo)}`);
 
     if (!numOne && !numTwo && !operator) {
         result = 0;
@@ -169,9 +170,7 @@ userSelectOperation.forEach(opButton => {
 });
 
 // Event listener for when the user wants to select the decmial key from the keypad
-userSelectDecimal.addEventListener("click", function () {
-    addDecimal();
-});
+userSelectDecimal.addEventListener("click", addDecimal);
 
 // Event listener for when the user wants to perform a operation with two numbers
 userSelectEquals.addEventListener("click", function (event) {
