@@ -142,6 +142,7 @@ const computeValue = function (event) {
         result = 0;
     } else if (operate(operator, numOne, numTwo) === Infinity) {
         result = "Error: Dividing by zero? Nice try."
+        numOne = NaN;
     } else if (numOne && !numTwo) {
         result = numOne;
     } else {
@@ -175,7 +176,6 @@ userSelectDecimal.addEventListener("click", function () {
 // Event listener for when the user wants to perform a operation with two numbers
 userSelectEquals.addEventListener("click", function (event) {
     computeValue(event);
-    resetValues();
 });
 
 // Event listener for when the user wants to clear the calculator display
