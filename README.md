@@ -42,7 +42,7 @@ SimpleCalcJS is a JavaScript-based on-screen calculator with basic math operatio
 
 ## Preview
 
-🔗 **Live preview:** [Click Here!](https://your-calculator-url.com)
+🔗 **Live preview:** [Click Here!](https://swhasans.github.io/SimpleCalcJS/)
 
 ## Tasks
 
