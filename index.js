@@ -4,64 +4,65 @@ let numTwo = 0;
 let result = 0;
 
 // Selecting the container, input fields, and buttons
-//MAIN Container
+// MAIN Container
 const container = document.querySelector(".container");
 
-//resultDisplayContainer
+// resultDisplayContainer
 const calcDisplay = document.querySelector("#calc-display");
 
-//operatorContainer
+// operatorContainer
 const opContainer = document.querySelector(".operatorContainer");
 const userSelectOperation = opContainer.querySelectorAll('input');
 
-//numberContainer
+// numberContainer
 const numContainer = document.querySelector(".numberContainer");
 const userSelectNumber = numContainer.querySelectorAll('input');
 
-//modifyResultContainer
+// modifyResultContainer
+// const userSelectDecimal = document.querySelector("#user-add-decimal");
 const userSelectClear = document.querySelector("#user-clear-display");
 const userSelectBksp = document.querySelector("#user-bksp-display");
 const userSelectEquals = document.querySelector("#user-result-display");
 
-const eraseBox = function () {
+function eraseBox() {
     calcDisplay.value = "";
-};
+}
 
-const resetnumOneValue = function () {
+function resetnumOneValue() {
     numOne = 0;
 }
 
-const resetOpsValue = function () {
+function resetOpsValue() {
     operator = "";
 }
 
-const resetnumTwoValue = function () {
+function resetnumTwoValue() {
     numTwo = 0;
 }
-const resetValues = function () {
+
+function resetValues() {
     resetnumOneValue();
     resetOpsValue();
     resetnumTwoValue();
 }
 
-const add = function (numOne, numTwo) {
+function add(numOne, numTwo) {
     return Number(numOne) + Number(numTwo);
-};
+}
 
-const subtract = function (numOne, numTwo) {
-    return numOne - numTwo;
-};
+function subtract(numOne, numTwo) {
+    return Number(numOne) - Number(numTwo);
+}
 
-const multiply = function (numOne, numTwo) {
-    return numOne * numTwo;
-};
+function multiply(numOne, numTwo) {
+    return Number(numOne) * Number(numTwo);
+}
 
-const divide = function (numOne, numTwo) {
-    return numOne / numTwo;
-};
+function divide(numOne, numTwo) {
+    return Number(numOne) / Number(numTwo);
+}
 
-const operate = function (operator, numOne, numTwo) {
-
+function operate(operator, numOne, numTwo) {
     if (operator === "+") {
         return add(numOne, numTwo);
     }
@@ -77,9 +78,9 @@ const operate = function (operator, numOne, numTwo) {
     if (operator === "/") {
         return divide(numOne, numTwo);
     }
-};
+}
 
-const updateNumValue = function (event) {
+function updateNumValue(event) {
     if (!operator) {
         updateNumOneValue(event);
     } else {
@@ -87,43 +88,72 @@ const updateNumValue = function (event) {
     }
 }
 
-const updateNumOneValue = function (event) {
+function updateNumOneValue(event) {
     if (!numOne || numOne === Infinity) {
         resetnumOneValue();
         eraseBox();
     }
-    numOne = numOne * 10 + Number(event.target.value);
-    updateDisplayValue(event);
-    console.log(`numOne: ${numOne}`);
-};
 
-const updateNumTwoValue = function (event) {
+    if (event.target.value === ".") {
+        if (numOne.toString().includes(".")) {
+            return;
+        }
+        addDecimal(event);
+        return;
+    }
+
+    numOne = numOne + event.target.value;
+    updateDisplayValue(event);
+    console.log(`numOne: ${Number(numOne)}`);
+}
+
+function updateNumTwoValue(event) {
     if (!numTwo || numTwo === Infinity) {
         resetnumTwoValue();
         eraseBox();
     }
-    numTwo = numTwo * 10 + Number(event.target.value);
-    updateDisplayValue(event);
-    console.log(`numTwo: ${numTwo}`);
-};
 
-const updateOperatorValue = function (event) {
+    if (event.target.value === ".") {
+        if (numTwo.toString().includes(".")) {
+            return;
+        }
+        addDecimal(event);
+        return;
+    }
+
+    numTwo = numTwo + event.target.value;
+    updateDisplayValue(event);
+    console.log(`numTwo: ${Number(numTwo)}`);
+}
+
+function updateOperatorValue(event) {
     operator = event.target.value;
     console.log(`operator: ${operator}`);
     eraseBox();
-};
+}
 
-const updateDisplayValue = function (event) {
+function addDecimal(event) {
+    // Check which number the decimal has to be added to.
+    if (!operator) {
+        numOne += ".";
+        updateDisplayValue(event);
+    } else {
+        numTwo += ".";
+        updateDisplayValue(event);
+    }
+}
+
+function updateDisplayValue(event) {
     calcDisplay.value += event.target.value;
-};
+}
 
-const computeValue = function (event) {
-    console.log(`numOne: ${numOne} || operator: ${operator} || numTwo: ${numTwo}`);
+function computeValue(event) {
+    console.log(`numOne: ${Number(numOne)} || operator: ${operator} || numTwo: ${Number(numTwo)}`);
 
     if (!numOne && !numTwo && !operator) {
         result = 0;
     } else if (operate(operator, numOne, numTwo) === Infinity) {
-        result = "Error: Dividing by zero? Nice try."
+        result = "Error: Dividing by zero? Nice try.";
         numOne = NaN;
     } else if (numOne && !numTwo) {
         result = numOne;
@@ -137,23 +167,27 @@ const computeValue = function (event) {
 
     resetOpsValue();
     resetnumTwoValue();
-};
+}
 
 // Event listener for when the user wants to select a number from the keypad
 userSelectNumber.forEach(numButton => {
     numButton.addEventListener('click', updateNumValue);
 });
 
-
 // Event listener for when the user wants to select the second number to perform operation on
 userSelectOperation.forEach(opButton => {
     opButton.addEventListener('click', updateOperatorValue);
 });
 
+// Event listener for when the user wants to select the decimal key from the keypad
+// userSelectDecimal.addEventListener("click", addDecimal);
+
+// Event listener for when the user wants to perform an operation with two numbers
 userSelectEquals.addEventListener("click", function (event) {
     computeValue(event);
 });
 
+// Event listener for when the user wants to clear the calculator display
 userSelectClear.addEventListener("click", function () {
     eraseBox();
     resetValues();
