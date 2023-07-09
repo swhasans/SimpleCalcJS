@@ -64,7 +64,7 @@ SimpleCalcJS is a JavaScript-based on-screen calculator with basic math operatio
 
 ### Extra Credit
 
-- [ ] **Decimal Input:** Implement the ability for users to input decimals by adding a "." button. Disable the decimal button if there's already one in the display to avoid multiple decimals in a number.
+- [x] **Decimal Input:** Implement the ability for users to input decimals by adding a "." button. Disable the decimal button if there's already one in the display to avoid multiple decimals in a number.
 
 - [ ] **CSS Styling:** Improve the visual appearance of the calculator using CSS. Differentiate the operations by giving them a distinct color from the keypad buttons.
 
