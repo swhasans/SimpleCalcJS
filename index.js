@@ -19,180 +19,176 @@ const numContainer = document.querySelector(".numberContainer");
 const userSelectNumber = numContainer.querySelectorAll('input');
 
 // modifyResultContainer
-const userSelectDecimal = document.querySelector("#user-add-decimal");
+// const userSelectDecimal = document.querySelector("#user-add-decimal");
 const userSelectClear = document.querySelector("#user-clear-display");
 const userSelectBksp = document.querySelector("#user-bksp-display");
 const userSelectEquals = document.querySelector("#user-result-display");
 
 function eraseBox() {
-  calcDisplay.value = "";
+    calcDisplay.value = "";
 }
 
 function resetnumOneValue() {
-  numOne = 0;
+    numOne = 0;
 }
 
 function resetOpsValue() {
-  operator = "";
+    operator = "";
 }
 
 function resetnumTwoValue() {
-  numTwo = 0;
+    numTwo = 0;
 }
 
 function resetValues() {
-  resetnumOneValue();
-  resetOpsValue();
-  resetnumTwoValue();
+    resetnumOneValue();
+    resetOpsValue();
+    resetnumTwoValue();
 }
 
 function add(numOne, numTwo) {
-  return Number(numOne) + Number(numTwo);
+    return Number(numOne) + Number(numTwo);
 }
 
 function subtract(numOne, numTwo) {
-  return Number(numOne) - Number(numTwo);
+    return Number(numOne) - Number(numTwo);
 }
 
 function multiply(numOne, numTwo) {
-  return Number(numOne) * Number(numTwo);
+    return Number(numOne) * Number(numTwo);
 }
 
 function divide(numOne, numTwo) {
-  return Number(numOne) / Number(numTwo);
+    return Number(numOne) / Number(numTwo);
 }
 
 function operate(operator, numOne, numTwo) {
-  if (operator === "+") {
-    return add(numOne, numTwo);
-  }
+    if (operator === "+") {
+        return add(numOne, numTwo);
+    }
 
-  if (operator === "-") {
-    return subtract(numOne, numTwo);
-  }
+    if (operator === "-") {
+        return subtract(numOne, numTwo);
+    }
 
-  if (operator === "*") {
-    return multiply(numOne, numTwo);
-  }
+    if (operator === "*") {
+        return multiply(numOne, numTwo);
+    }
 
-  if (operator === "/") {
-    return divide(numOne, numTwo);
-  }
+    if (operator === "/") {
+        return divide(numOne, numTwo);
+    }
 }
 
 function updateNumValue(event) {
-  if (!operator) {
-    updateNumOneValue(event);
-  } else {
-    updateNumTwoValue(event);
-  }
+    if (!operator) {
+        updateNumOneValue(event);
+    } else {
+        updateNumTwoValue(event);
+    }
 }
 
 function updateNumOneValue(event) {
-  if (!numOne || numOne === Infinity) {
-    resetnumOneValue();
-    eraseBox();
-  }
+    if (!numOne || numOne === Infinity) {
+        resetnumOneValue();
+        eraseBox();
+    }
 
-  if (event.target.value === ".") {
-    addDecimal();
-    console.log("FUNC ADD DECIMAL NUM1");
-    return;
-  }
+    if (event.target.value === ".") {
+        if (numOne.toString().includes(".")) {
+            return;
+        }
+        addDecimal(event);
+        return;
+    }
 
-  console.log("FUNC NUM1");
-  numOne = numOne + event.target.value;
-  updateDisplayValue(event);
-  console.log(`numOne: ${Number(numOne)}`);
+    numOne = numOne + event.target.value;
+    updateDisplayValue(event);
+    console.log(`numOne: ${Number(numOne)}`);
 }
 
 function updateNumTwoValue(event) {
-  if (!numTwo || numTwo === Infinity) {
-    resetnumTwoValue();
-    eraseBox();
-  }
+    if (!numTwo || numTwo === Infinity) {
+        resetnumTwoValue();
+        eraseBox();
+    }
 
-  if (event.target.value === ".") {
-    addDecimal();
-    console.log("FUNC ADD DECIMAL NUM2");
-    return;
-  }
+    if (event.target.value === ".") {
+        if (numTwo.toString().includes(".")) {
+            return;
+        }
+        addDecimal(event);
+        return;
+    }
 
-  console.log("FUNC NUM2");
-  numTwo = numTwo + event.target.value;
-  updateDisplayValue(event);
-  console.log(`numTwo: ${Number(numTwo)}`);
+    numTwo = numTwo + event.target.value;
+    updateDisplayValue(event);
+    console.log(`numTwo: ${Number(numTwo)}`);
 }
 
 function updateOperatorValue(event) {
-  operator = event.target.value;
-  console.log(`operator: ${operator}`);
-  eraseBox();
+    operator = event.target.value;
+    console.log(`operator: ${operator}`);
+    eraseBox();
 }
 
 function addDecimal(event) {
-  // Check which number the decimal has to be added to.
-  if (!operator) {
-    // Check if that number already has a decimal point, if yes then do not let the user enter more decimals.
-    if (Number.isInteger(numOne)) {
-      numOne += ".";
-      updateDisplayValue(event);
+    // Check which number the decimal has to be added to.
+    if (!operator) {
+        numOne += ".";
+        updateDisplayValue(event);
+    } else {
+        numTwo += ".";
+        updateDisplayValue(event);
     }
-  } else {
-    // Check if that number already has a decimal point, if yes then do nothing return.
-    if (Number.isInteger(numTwo)) {
-      numTwo += ".";
-      updateDisplayValue(event);
-    }
-  }
 }
 
 function updateDisplayValue(event) {
-  calcDisplay.value += event.target.value;
+    calcDisplay.value += event.target.value;
 }
 
 function computeValue(event) {
-  console.log(`numOne: ${Number(numOne)} || operator: ${operator} || numTwo: ${Number(numTwo)}`);
+    console.log(`numOne: ${Number(numOne)} || operator: ${operator} || numTwo: ${Number(numTwo)}`);
 
-  if (!numOne && !numTwo && !operator) {
-    result = 0;
-  } else if (operate(operator, numOne, numTwo) === Infinity) {
-    result = "Error: Dividing by zero? Nice try.";
-    numOne = NaN;
-  } else if (numOne && !numTwo) {
-    result = numOne;
-  } else {
-    numOne = operate(operator, numOne, numTwo);
-    result = numOne;
-  }
+    if (!numOne && !numTwo && !operator) {
+        result = 0;
+    } else if (operate(operator, numOne, numTwo) === Infinity) {
+        result = "Error: Dividing by zero? Nice try.";
+        numOne = NaN;
+    } else if (numOne && !numTwo) {
+        result = numOne;
+    } else {
+        numOne = operate(operator, numOne, numTwo);
+        result = numOne;
+    }
 
-  console.log("Result: " + result);
-  calcDisplay.value = result;
+    console.log("Result: " + result);
+    calcDisplay.value = result;
 
-  resetOpsValue();
-  resetnumTwoValue();
+    resetOpsValue();
+    resetnumTwoValue();
 }
 
 // Event listener for when the user wants to select a number from the keypad
 userSelectNumber.forEach(numButton => {
-  numButton.addEventListener('click', updateNumValue);
+    numButton.addEventListener('click', updateNumValue);
 });
 
 // Event listener for when the user wants to select the second number to perform operation on
 userSelectOperation.forEach(opButton => {
-  opButton.addEventListener('click', updateOperatorValue);
+    opButton.addEventListener('click', updateOperatorValue);
 });
 
 // Event listener for when the user wants to select the decimal key from the keypad
-userSelectDecimal.addEventListener("click", addDecimal);
+// userSelectDecimal.addEventListener("click", addDecimal);
 
 // Event listener for when the user wants to perform an operation with two numbers
 userSelectEquals.addEventListener("click", function (event) {
-  computeValue(event);
+    computeValue(event);
 });
 
 // Event listener for when the user wants to clear the calculator display
 userSelectClear.addEventListener("click", function () {
-  eraseBox();
-  resetValues();
+    eraseBox();
+    resetValues();
 });
