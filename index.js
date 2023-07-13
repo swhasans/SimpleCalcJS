@@ -126,7 +126,7 @@ function updateNumTwoValue(event) {
 }
 
 function updateOperatorValue(event) {
-    if (numOne && operator && numTwo) {
+    if ((numOne === 0 || numOne) && operator && numTwo) {
         computeValue(event);
     }
         operator = event.target.value;
