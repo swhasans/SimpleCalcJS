@@ -19,7 +19,6 @@ const numContainer = document.querySelector(".numberContainer");
 const userSelectNumber = numContainer.querySelectorAll('input');
 
 // modifyResultContainer
-// const userSelectDecimal = document.querySelector("#user-add-decimal");
 const userSelectClear = document.querySelector("#user-clear-display");
 const userSelectBksp = document.querySelector("#user-bksp-display");
 const userSelectEquals = document.querySelector("#user-result-display");
@@ -178,9 +177,6 @@ userSelectNumber.forEach(numButton => {
 userSelectOperation.forEach(opButton => {
     opButton.addEventListener('click', updateOperatorValue);
 });
-
-// Event listener for when the user wants to select the decimal key from the keypad
-// userSelectDecimal.addEventListener("click", addDecimal);
 
 // Event listener for when the user wants to perform an operation with two numbers
 userSelectEquals.addEventListener("click", function (event) {
