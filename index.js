@@ -126,9 +126,12 @@ function updateNumTwoValue(event) {
 }
 
 function updateOperatorValue(event) {
-    operator = event.target.value;
-    console.log(`operator: ${operator}`);
-    eraseBox();
+    if (numOne && operator && numTwo) {
+        computeValue(event);
+    }
+        operator = event.target.value;
+        console.log(`operator: ${operator}`);
+        eraseBox();
 }
 
 function addDecimal(event) {
