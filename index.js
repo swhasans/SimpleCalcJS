@@ -126,7 +126,7 @@ function updateNumTwoValue(event) {
 }
 
 function updateOperatorValue(event) {
-    if ((numOne === 0 || numOne) && operator && numTwo) {
+    if ((isNaN(numOne) || numOne === 0 || numOne) && operator && numTwo) {
         computeValue(event);
     }
         operator = event.target.value;
@@ -160,8 +160,8 @@ function computeValue(event) {
     } else if (numOne && !numTwo) {
         result = numOne;
     } else {
-        numOne = operate(operator, numOne, numTwo);
-        result = numOne;
+        result = operate(operator, numOne, numTwo);
+        numOne = result;
     }
 
     console.log("Result: " + result);
