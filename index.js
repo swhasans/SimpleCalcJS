@@ -128,10 +128,10 @@ function updateNumTwoValue(event) {
 function updateOperatorValue(event) {
     if ((isNaN(numOne) || numOne === 0 || numOne) && operator && numTwo) {
         computeValue(event);
+        displayResult(result);
     }
         operator = event.target.value;
         console.log(`operator: ${operator}`);
-        eraseBox();
 }
 
 function addDecimal(event) {
@@ -149,23 +149,25 @@ function updateDisplayValue(event) {
     calcDisplay.value += event.target.value;
 }
 
+function displayResult(result){
+    console.log("Result: " + result);
+    calcDisplay.value = result;
+}
+
 function computeValue(event) {
     console.log(`numOne: ${Number(numOne)} || operator: ${operator} || numTwo: ${Number(numTwo)}`);
 
     if (!numOne && !numTwo && !operator) {
         result = 0;
-    } else if (operate(operator, numOne, numTwo) === Infinity) {
+    } else if ((operate(operator, numOne, numTwo) === Infinity) || ((numOne === "NaN") && ((operator === "/") && (numTwo === 0)))) {
         result = "Error: Dividing by zero? Nice try.";
         numOne = NaN;
     } else if (numOne && !numTwo) {
         result = numOne;
     } else {
-        result = operate(operator, numOne, numTwo);
-        numOne = result;
+        numOne = operate(operator, numOne, numTwo);
+        result = numOne;
     }
-
-    console.log("Result: " + result);
-    calcDisplay.value = result;
 
     resetOpsValue();
     resetnumTwoValue();
@@ -184,6 +186,7 @@ userSelectOperation.forEach(opButton => {
 // Event listener for when the user wants to perform an operation with two numbers
 userSelectEquals.addEventListener("click", function (event) {
     computeValue(event);
+    displayResult(result);
 });
 
 // Event listener for when the user wants to clear the calculator display
