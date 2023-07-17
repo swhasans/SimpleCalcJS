@@ -203,7 +203,7 @@ function computeValue() {
     } else if ((operate(operator, numOne, numTwo) === Infinity) || ((numOne === "NaN") && ((operator === "/") && (numTwo === 0)))) {
         result = "Error: Dividing by zero? Nice try.";
         numOne = NaN;
-    } else if (numOne && !numTwo) {
+    } else if (numOne && !numTwo && numTwo !== 0) {
         result = numOne;
     } else {
         numOne = operate(operator, numOne, numTwo);
