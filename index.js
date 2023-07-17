@@ -170,7 +170,7 @@ function handleBackspace() {
             resetnumOneValue();
             calcDisplay.value = 0;
             console.log(`numOne: ${numOne}`);
-        }else{
+        } else {
             numOne = Number(numOne.toString().slice(0, -1));
             calcDisplay.value = numOne;
             console.log(`numOne: ${numOne}`);
@@ -180,7 +180,7 @@ function handleBackspace() {
             resetnumTwoValue();
             calcDisplay.value = 0;
             console.log(`numTwo: ${numTwo}`);
-        }else{
+        } else {
             numTwo = Number(numTwo.toString().slice(0, -1));
             calcDisplay.value = numTwo;
             console.log(`numTwo: ${numTwo}`);
@@ -200,14 +200,14 @@ function computeValue() {
 
     if (!numOne && !numTwo && !operator) {
         result = 0;
-    } else if ((operate(operator, numOne, numTwo) === Infinity) || ((numOne === "NaN") && ((operator === "/") && (numTwo === 0)))) {
+    } else if ((numOne && !numTwo && numTwo !== 0) || (numOne && !operator && !numTwo) || (numOne && operator && !numTwo)) {
+        result = Number(numOne);
+    } else if ((operate(operator, numOne, numTwo) === Infinity)) {
         result = "Error: Dividing by zero? Nice try.";
         numOne = NaN;
-    } else if (numOne && !numTwo && numTwo !== 0) {
-        result = numOne;
     } else {
         numOne = operate(operator, numOne, numTwo);
-        result = numOne;
+        result = Number(numOne);
     }
 
     resetOpsValue();
