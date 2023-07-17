@@ -166,13 +166,25 @@ function updateDisplayValue(event) {
 // Handles the backspace functionality to undo the last input or remove a character from the calculator display
 function handleBackspace() {
     if (!operator) {
-        numOne = Number(numOne.toString().slice(0, -1));
-        calcDisplay.value = numOne;
-        console.log(`numOne: ${numOne}`);
+        if (!numOne || numOne === Infinity || Math.abs(Number(numOne)) < 10) {
+            resetnumOneValue();
+            calcDisplay.value = 0;
+            console.log(`numOne: ${numOne}`);
+        }else{
+            numOne = Number(numOne.toString().slice(0, -1));
+            calcDisplay.value = numOne;
+            console.log(`numOne: ${numOne}`);
+        }
     } else {
-        numTwo = Number(numTwo.toString().slice(0, -1));
-        calcDisplay.value = numTwo;
-        console.log(`numTwo: ${numTwo}`);
+        if (!numTwo || numTwo === Infinity || Math.abs(Number(numTwo)) < 10) {
+            resetnumTwoValue();
+            calcDisplay.value = 0;
+            console.log(`numTwo: ${numTwo}`);
+        }else{
+            numTwo = Number(numTwo.toString().slice(0, -1));
+            calcDisplay.value = numTwo;
+            console.log(`numTwo: ${numTwo}`);
+        }
     }
 }
 
