@@ -140,7 +140,7 @@ function updateNumTwoValue(event) {
 // Function to update the operator value
 function updateOperatorValue(event) {
     if ((isNaN(numOne) || numOne === 0 || numOne) && operator && numTwo) {
-        computeValue(event);
+        computeValue();
         displayResult(result);
     }
     operator = event.target.value;
@@ -170,7 +170,7 @@ function displayResult(result) {
 }
 
 // Function to compute the result of the operation
-function computeValue(event) {
+function computeValue() {
     console.log(`numOne: ${Number(numOne)} || operator: ${operator} || numTwo: ${Number(numTwo)}`);
 
     if (!numOne && !numTwo && !operator) {
@@ -200,8 +200,8 @@ userSelectOperation.forEach(opButton => {
 });
 
 // Event listener for when the user wants to compute the result
-userSelectEquals.addEventListener("click", function (event) {
-    computeValue(event);
+userSelectEquals.addEventListener("click", function () {
+    computeValue();
     displayResult(result);
 });
 
