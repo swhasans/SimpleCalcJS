@@ -166,9 +166,11 @@ function updateDisplayValue(event) {
 // Handles the backspace functionality to undo the last input or remove a character from the calculator display
 function handleBackspace(){
     if (!operator) {
-        
+        numOne -= " ";
+        updateDisplayValue();
     } else {
-        updateNumTwoValue();
+        numTwo -= " ";
+        updateDisplayValue();
     }
 }
 
@@ -211,7 +213,6 @@ userSelectOperation.forEach(opButton => {
 // Event listener for when the user wants to undo the last input or remove a character from the calculator display
 userSelectBksp.addEventListener("click", function () {
     handleBackspace();
-    displayResult(result);
 });
 
 // Event listener for when the user wants to compute the result
