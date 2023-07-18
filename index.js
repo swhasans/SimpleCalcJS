@@ -3,9 +3,6 @@ let operator = "";
 let numTwo = 0;
 let result = 0;
 
-// Selecting the container, input fields, and buttons
-const container = document.querySelector(".container");
-
 // Selecting the result display container
 const calcDisplay = document.querySelector("#calc-display");
 
@@ -140,7 +137,7 @@ function updateNumTwoValue(event) {
 // Function to update the operator value
 function updateOperatorValue(event) {
     if ((isNaN(numOne) || numOne === 0 || numOne) && operator && numTwo) {
-        computeValue(event);
+        computeValue();
         displayResult(result);
     }
     operator = event.target.value;
@@ -163,6 +160,43 @@ function updateDisplayValue(event) {
     calcDisplay.value += event.target.value;
 }
 
+// Handles the backspace functionality to undo the last input or remove a character from the calculator display
+function handleBackspace() {
+    if (!operator) {
+        if (!numOne || numOne === Infinity) {
+            resetnumOneValue();
+            calcDisplay.value = 0;
+            console.log(`numOne: ${numOne}`);
+        } else {
+            numOne = Number(numOne.toString().slice(0, -1));
+            if (!numOne) {
+                resetnumOneValue();
+                calcDisplay.value = 0;
+                console.log(`numOne: ${numOne}`);
+                return;
+            }
+            calcDisplay.value = numOne;
+            console.log(`numOne: ${numOne}`);
+        }
+    } else {
+        if (!numTwo || numTwo === Infinity) {
+            resetnumTwoValue();
+            calcDisplay.value = 0;
+            console.log(`numTwo: ${numTwo}`);
+        } else {
+            numTwo = Number(numTwo.toString().slice(0, -1));
+            if (!numTwo) {
+                resetnumTwoValue();
+                calcDisplay.value = 0;
+                console.log(`numTwo: ${numTwo}`);
+                return;
+            }
+            calcDisplay.value = numTwo;
+            console.log(`numTwo: ${numTwo}`);
+        }
+    }
+}
+
 // Function to display the result
 function displayResult(result) {
     console.log("Result: " + result);
@@ -170,19 +204,19 @@ function displayResult(result) {
 }
 
 // Function to compute the result of the operation
-function computeValue(event) {
+function computeValue() {
     console.log(`numOne: ${Number(numOne)} || operator: ${operator} || numTwo: ${Number(numTwo)}`);
 
     if (!numOne && !numTwo && !operator) {
         result = 0;
-    } else if ((operate(operator, numOne, numTwo) === Infinity) || ((numOne === "NaN") && ((operator === "/") && (numTwo === 0)))) {
+    } else if ((numOne && !numTwo && numTwo !== 0) || (numOne && !operator && !numTwo) || (numOne && operator && !numTwo)) {
+        result = Number(numOne);
+    } else if ((operate(operator, numOne, numTwo) === Infinity)) {
         result = "Error: Dividing by zero? Nice try.";
         numOne = NaN;
-    } else if (numOne && !numTwo) {
-        result = numOne;
     } else {
         numOne = operate(operator, numOne, numTwo);
-        result = numOne;
+        result = Number(numOne);
     }
 
     resetOpsValue();
@@ -199,9 +233,14 @@ userSelectOperation.forEach(opButton => {
     opButton.addEventListener('click', updateOperatorValue);
 });
 
+// Event listener for when the user wants to undo the last input or remove a character from the calculator display
+userSelectBksp.addEventListener("click", function () {
+    handleBackspace();
+});
+
 // Event listener for when the user wants to compute the result
-userSelectEquals.addEventListener("click", function (event) {
-    computeValue(event);
+userSelectEquals.addEventListener("click", function () {
+    computeValue();
     displayResult(result);
 });
 
