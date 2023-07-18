@@ -68,7 +68,7 @@ SimpleCalcJS is a JavaScript-based on-screen calculator with basic math operatio
 
 - [ ] **CSS Styling:** Improve the visual appearance of the calculator using CSS. Differentiate the operations by giving them a distinct color from the keypad buttons.
 
-- [ ] **Backspace Functionality:** Add a "backspace" button to allow users to undo input if they click the wrong number.
+- [x] **Backspace Functionality:** Add a "backspace" button to allow users to undo input if they click the wrong number.
 
 - [ ] **Keyboard Support:** Enhance the calculator by adding keyboard support. Solve potential issues with specific keys, such as "/", by reading the MDN documentation on event.preventDefault().
 
