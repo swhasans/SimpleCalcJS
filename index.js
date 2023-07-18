@@ -169,10 +169,10 @@ function handleBackspace() {
             console.log(`numOne: ${numOne}`);
         } else {
             numOne = Number(numOne.toString().slice(0, -1));
-            if(!numOne){
+            if (!numOne) {
                 resetnumOneValue();
                 calcDisplay.value = 0;
-                console.log(`numOne: ${numOne}`);  
+                console.log(`numOne: ${numOne}`);
                 return;
             }
             calcDisplay.value = numOne;
@@ -185,7 +185,7 @@ function handleBackspace() {
             console.log(`numTwo: ${numTwo}`);
         } else {
             numTwo = Number(numTwo.toString().slice(0, -1));
-            if(!numTwo){
+            if (!numTwo) {
                 resetnumTwoValue();
                 calcDisplay.value = 0;
                 console.log(`numTwo: ${numTwo}`);
