@@ -3,9 +3,6 @@ let operator = "";
 let numTwo = 0;
 let result = 0;
 
-// Selecting the container, input fields, and buttons
-const container = document.querySelector(".container");
-
 // Selecting the result display container
 const calcDisplay = document.querySelector("#calc-display");
 
@@ -166,22 +163,34 @@ function updateDisplayValue(event) {
 // Handles the backspace functionality to undo the last input or remove a character from the calculator display
 function handleBackspace() {
     if (!operator) {
-        if (!numOne || numOne === Infinity || Math.abs(Number(numOne)) < 10) {
+        if (!numOne || numOne === Infinity) {
             resetnumOneValue();
             calcDisplay.value = 0;
             console.log(`numOne: ${numOne}`);
         } else {
             numOne = Number(numOne.toString().slice(0, -1));
+            if(!numOne){
+                resetnumOneValue();
+                calcDisplay.value = 0;
+                console.log(`numOne: ${numOne}`);  
+                return;
+            }
             calcDisplay.value = numOne;
             console.log(`numOne: ${numOne}`);
         }
     } else {
-        if (!numTwo || numTwo === Infinity || Math.abs(Number(numTwo)) < 10) {
+        if (!numTwo || numTwo === Infinity) {
             resetnumTwoValue();
             calcDisplay.value = 0;
             console.log(`numTwo: ${numTwo}`);
         } else {
             numTwo = Number(numTwo.toString().slice(0, -1));
+            if(!numTwo){
+                resetnumTwoValue();
+                calcDisplay.value = 0;
+                console.log(`numTwo: ${numTwo}`);
+                return;
+            }
             calcDisplay.value = numTwo;
             console.log(`numTwo: ${numTwo}`);
         }
